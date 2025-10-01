@@ -10,9 +10,10 @@ import httpx
 from telegram import (
     Update,
     InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    ChatAction
+    InlineKeyboardButton
 )
+from telegram.constants import ChatAction
+
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -286,3 +287,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
