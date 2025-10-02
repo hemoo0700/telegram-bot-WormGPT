@@ -3,8 +3,20 @@ services:
     name: telegram-bot-WormGPT
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pyenv install 3.11.9 -s
+      pyenv global 3.11.9
+      pip install --upgrade pip
+      pip install -r requirements.txt
     startCommand: python telegram_bot.py
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.9
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: SERVICE_API_KEY
+        sync: false
+      - key: SERVICE_ENDPOINT
+        sync: false
+      - key: OWNER_USERNAME
+        sync: false
+      - key: DB_PATH
+        sync: false
