@@ -151,7 +151,7 @@ HELP_TEXT = (
     "⚠️تنبيه⚠️: البوت يقدم محتوى تعليمياً فقط. لا يدعم أفعالاً غير قانونية"
 )
 
-async def call_service_api_safe(prompt: str) -> str:
+async def call_service(prompt: str) -> str:
         
     
     if SERVICE_ENDPOINT and SERVICE_API_KEY:
@@ -245,7 +245,7 @@ async def handle_message(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     text = update.message.text.strip()
 
     try:
-        result = await SERVICE_ENDPOINT(text)
+        result = await call_service(text)
     except Exception as e:
         logger.exception("فشل استدعاء الخدمة")
         await update.message.reply_text("حدث خطأ أثناء المعالجة. حاول لاحقًا.")
@@ -287,4 +287,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
