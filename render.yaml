@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: telegram-bot-WormGPT
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python telegram_bot.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
